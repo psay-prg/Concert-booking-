@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code Already Used</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", "PingFang SC", sans-serif;
+    background: linear-gradient(135deg, #2b1055, #7597de);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px 32px;
+    max-width: 360px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    animation: pop 0.4s ease;
+  }
+  @keyframes pop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #fee2e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon svg { width: 36px; height: 36px; }
+  h1 {
+    font-size: 20px;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+  }
+  p {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+  .code {
+    margin-top: 20px;
+    padding: 10px 14px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #9ca3af;
+    font-family: monospace;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="15" y1="9" x2="9" y2="15"/>
+        <line x1="9" y1="9" x2="15" y2="15"/>
+      </svg>
+    </div>
+    <h1>This QR code has been scanned</h1>
+    <p>This QR code has already been used and cannot be scanned again.</p>
+    <div class="code" id="timestamp"></div>
+  </div>
+  <script>
+    document.getElementById('timestamp').textContent =
+      'Scanned at: ' + new Date().toLocaleString();
+  </script>
+</body>
+</html>
